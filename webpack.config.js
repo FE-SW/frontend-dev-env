@@ -19,7 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(scss|css)$/,
         use: [
           /**
            * TODO: SASS 코드를 사용할수 있겠끔 sass-loader를 구성하세요.
@@ -27,7 +27,8 @@ module.exports = {
           process.env.NODE_ENV === "production"
             ? MiniCssExtractPlugin.loader // 프로덕션 환경
             : "style-loader", // 개발 환경
-          "css-loader"
+          "css-loader",
+          "sass-loader",
         ]
       },
       {
@@ -69,3 +70,7 @@ module.exports = {
       : [])
   ]
 };
+
+
+// node-sass: Node.js 환경에서 SASS(SCSS)를 사용할 수 있게 해주는 라이브러리
+// sass-loader: sass파일을 css파일로 컴파일 해주는 로더
