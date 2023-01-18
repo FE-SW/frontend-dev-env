@@ -74,3 +74,8 @@ module.exports = {
 
 // node-sass: Node.js 환경에서 SASS(SCSS)를 사용할 수 있게 해주는 라이브러리
 // sass-loader: sass파일을 css파일로 컴파일 해주는 로더
+
+//node-sass 설치시 node와 node-sass 버전 차이로 설치가 안될 수 있다.
+//참고:https://github.com/nvm-sh/nvm#installing-and-updating
+//참고:https://jeonghwan-kim.github.io/2016/08/10/nvm.html
+
