@@ -177,7 +177,7 @@ Babel은 JavaScript 컴파일러로써, 최신 JavaScript(ES6 이상) 문법을 
 
 ### 프리셋
 Babel의 프리셋은 특정 변환을 위한 여러 플러그인의 집합이다. 필요한 플러그인을 일일이 설정하는 일은 매우 난해한 일이기 때문이다.
-즉 목적에 맞게 여러가지 플러그인을 세트로 모아놓은 것을 "프리셋"이라고 한다.
+즉 목적에 맞게 여러가지 플러그인을 세트로 모아놓은 것을 "프리셋"이라고 한다.Babel과 관련된 이러한 프리셋들은 바벨 설정 파일 (예: .babelrc 또는 babel.config.js)에서 presets 배열 안에 정의되어 사용된다.
 
 ### [자주쓰는 preset]:
 #### 1. @babel/preset-env
@@ -191,7 +191,7 @@ React JSX 문법과 기타 React 관련 기능들을 변환하는 데 사용된�
 
 #### 4. @babel/preset-typescript
 TypeScript 코드를 표준 JavaScript로 변환한다. TypeScript는 정적 타입 검사를 제공하는 JavaScript의 확장이다. 이 프리셋을 사용하여 TypeScript의 타입 주석 및 기타 TypeScript 전용 문법을 제거한다.
-Babel과 관련된 이러한 프리셋들은 바벨 설정 파일 (예: .babelrc 또는 babel.config.js)에서 presets 배열 안에 정의되어 사용된다.
+
 
 
 ```java
