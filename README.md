@@ -230,4 +230,5 @@ module.exports = {
 <br/>
 
 ## 참고
-https://www.inflearn.com/course/프론트엔드-개발환경
+* https://webpack.kr/concepts/
+* https://www.inflearn.com/course/프론트엔드-개발환경
