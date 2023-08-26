@@ -126,7 +126,6 @@ module.exports = {
 }
 ```
 
-### [자주쓰는 looader]:
 #### 1.css-loader:
 * CSS 파일을 JavaScript 모듈로 해석하고 번들링한다. 이 로더를 사용하면, JavaScript에서 import나 require 문을 통해 CSS를 로드할 수 있게 된다.
 
@@ -152,8 +151,6 @@ module.exports = {
 }
 ```
 
-
-### [자주쓰는 plugin]:
 #### 1.BannerPlugin
 컴파일된 출력 파일의 맨 위에 배너 또는 헤더를 추가하는 데 사용된다. 이는 주로 라이선스나 프로젝트 정보와 같은 메타 정보를 포함시키기 위해 사용된다.
 
@@ -168,6 +165,57 @@ HTML 파일을 생성하며, 웹팩으로 번들링된 JavaScript, CSS, 그 외 
 
 #### 5.MiniCssExtractPlugin
 JavaScript에서 분리된 CSS를 별도의 파일로 추출하는 데 사용된다. 이렇게 함으로써, CSS를 비동기적으로 로드하거나 별도의 CSS 파일로 캐시하는 것이 가능해져 웹의 로딩 성능이 향상된다.
+
+
+## webpack-dev-server
+
+webpack-dev-server는 웹팩으로 번들링된 웹 애플리케이션을 개발 환경에서 빠르고 효율적으로 테스트하고 미리보기 위한 간단한 웹 서버이다. 
+
+```java
+npm i -D webpack-dev-server // 설치 명령어 
+```
+
+```java
+{
+  "scripts": {
+    "start": "webpack-dev-server" // 웹팩 개발서버 실행
+  }
+}
+```
+
+```java
+//웹팩 데브서버 설정
+devServer: {
+  overlay: true, // 컴파일 중 에러나 경고가 발생하면 브라우저 화면에 오버레이를 통해 표시
+  stats: "errors-only", // 통계 출력을 '오류만'으로 제한
+  contentBase: path.join(__dirname, "dist"),  // 번들된 파일들을 제공할 경로
+  publicPath: "/", // 번들된 자원을 제공할 경로 (웹 서버 기준)
+  host: "dev.domain.com", // 개발 서버의 호스트명을 설정
+  port: 8081, // 웹팩 서버 포트 번호
+  historyApiFallback: true, // 404 응답 대신 index.html을 제공 (클라이언트 측 라우팅에 유용)
+  // before: (app) => { // 개발 서버 실행 전 특정 라우트 설정 (예: mock API)
+  //   app.get("/api/keywords", (req, res) => {
+  //     res.json([
+  //       { keyword: "이탈리아" },
+  //       { keyword: "세프의요리" },
+  //       { keyword: "제철" },
+  //       { keyword: "홈파티" },
+  //     ]);
+  //   });
+  // },
+  before: (app) => { // `apiMocker` 라이브러리를 사용하여 mock API 설정
+    app.use(apiMocker("/api", "mocks/api"));
+  },
+  proxy: {
+    "/api": "http://localhost:8081", // "/api"로 시작하는 요청을 `http://localhost:8081`로 프록시
+  },
+}
+```
+
+위에 없는옵션들은 공식문서에서 천천히 읽고 설정해주면 된다. 
+
+
+
 
 <br/>
 
