@@ -127,19 +127,19 @@ module.exports = {
 ```
 
 #### 1. css-loader:
-  * CSS 파일을 JavaScript 모듈로 해석하고 번들링한다. 이 로더를 사용하면, JavaScript에서 import나 require 문을 통해 CSS를 로드할 수 있게 된다.
+* CSS 파일을 JavaScript 모듈로 해석하고 번들링한다. 이 로더를 사용하면, JavaScript에서 import나 require 문을 통해 CSS를 로드할 수 있게 된다.
 
 #### 2. style-loader:
-  * JavaScript로 변환된 CSS를 DOM에 삽입하기 위해 사용된다. 주로 css-loader와 함께 사용되며, css-loader로 해석된 CSS를 <style> 태그로 DOM에 추가한다.
+* JavaScript로 변환된 CSS를 DOM에 삽입하기 위해 사용된다. 주로 css-loader와 함께 사용되며, css-loader로 해석된 CSS를 <style> 태그로 DOM에 추가한다.
 
 #### 3. file-loader:
-  * 파일(예: 이미지, 폰트 등)을 처리하고 웹팩의 output 디렉토리에 해당 파일을 복사한다. 이로써 해당 파일에 대한 URL을 생성하게 되며, 최종 번들에 이 URL을 포함시켜 접근이 가능하게 한다.
+* 파일(예: 이미지, 폰트 등)을 처리하고 웹팩의 output 디렉토리에 해당 파일을 복사한다. 이로써 해당 파일에 대한 URL을 생성하게 되며, 최종 번들에 이 URL을 포함시켜 접근이 가능하게 한다.
 
 #### 4. url-loader:
-  * file-loader와 유사한 작업을 수행하지만, 설정한 크기의 임계값을 기준으로 작은 파일을 Base64 인코딩하여 직접 JavaScript 번들에 포함시킬 수 있다. 이는 HTTP 요청 수를 줄이는 데 도움이 되지만, 큰 파일에 대해 사용할 경우 번들의 크기가 너무 커질 수 있으므로 주의가 필요하다.
+* file-loader와 유사한 작업을 수행하지만, 설정한 크기의 임계값을 기준으로 작은 파일을 Base64 인코딩하여 직접 JavaScript 번들에 포함시킬 수 있다. 이는 HTTP 요청 수를 줄이는 데 도움이 되지만, 큰 파일에 대해 사용할 경우 번들의 크기가 너무 커질 수 있으므로 주의가 필요하다.
 
 #### 5. sass-loader:
-  * SASS/SCSS 파일을 웹팩이 처리할 수 있는 CSS로 변환한다. 이 로더는 node-sass 또는 dart-sass와 함께 작동하여, 웹팩 빌드 프로세스 중에 SASS 파일을 일반 CSS로 컴파일한다. 주로 css-loader와 style-loader와 체인으로 함께 사용되며, 개발자가 JavaScript에서 직접 SASS 스타일을 import할 수 있게 해준다.
+* SASS/SCSS 파일을 웹팩이 처리할 수 있는 CSS로 변환한다. 이 로더는 node-sass 또는 dart-sass와 함께 작동하여, 웹팩 빌드 프로세스 중에 SASS 파일을 일반 CSS로 컴파일한다. 주로 css-loader와 style-loader와 체인으로 함께 사용되며, 개발자가 JavaScript에서 직접 SASS 스타일을 import할 수 있게 해준다.
 
 #### 참고: https://webpack.js.org/loaders/
 
@@ -156,20 +156,20 @@ module.exports = {
 }
 ```
 
-#### 1.BannerPlugin
-컴파일된 출력 파일의 맨 위에 배너 또는 헤더를 추가하는 데 사용된다. 이는 주로 라이선스나 프로젝트 정보와 같은 메타 정보를 포함시키기 위해 사용된다.
+#### 1.BannerPlugin:
+* 컴파일된 출력 파일의 맨 위에 배너 또는 헤더를 추가하는 데 사용된다. 이는 주로 라이선스나 프로젝트 정보와 같은 메타 정보를 포함시키기 위해 사용된다.
 
-#### 2.DefinePlugin
-컴파일 시간에 전역 상수를 정의하는 데 사용된다. 이 플러그인을 사용하여 환경 변수 같은 값을 코드에 주입할 수 있다. 예를 들면, 개발 및 프로덕션 환경에 따라 다른 API 엔드포인트를 사용하고 싶을 때 유용하다.
+#### 2.DefinePlugin:
+* 컴파일 시간에 전역 상수를 정의하는 데 사용된다. 이 플러그인을 사용하여 환경 변수 같은 값을 코드에 주입할 수 있다. 예를 들면, 개발 및 프로덕션 환경에 따라 다른 API 엔드포인트를 사용하고 싶을 때 유용하다.
 
-#### 3.HtmlWebpackPlugin
-HTML 파일을 생성하며, 웹팩으로 번들링된 JavaScript, CSS, 그 외 자원들을 자동으로 HTML에 포함시켜준다. SPA(Single Page Application)나 여러 페이지로 구성된 애플리케이션에서 유용하게 사용된다.
+#### 3.HtmlWebpackPlugin:
+* HTML 파일을 생성하며, 웹팩으로 번들링된 JavaScript, CSS, 그 외 자원들을 자동으로 HTML에 포함시켜준다. SPA(Single Page Application)나 여러 페이지로 구성된 애플리케이션에서 유용하게 사용된다.
 
-#### 4.CleanWebpackPlugin
-매번 웹팩을 실행할 때마다, 이전에 생성된 빌드 파일들을 자동으로 삭제하는 데 사용된다. 이로써 빌드 디렉토리가 오래된 또는 불필요한 파일로 인해 오염되는 것을 방지한다.
+#### 4.CleanWebpackPlugin:
+* 매번 웹팩을 실행할 때마다, 이전에 생성된 빌드 파일들을 자동으로 삭제하는 데 사용된다. 이로써 빌드 디렉토리가 오래된 또는 불필요한 파일로 인해 오염되는 것을 방지한다.
 
-#### 5.MiniCssExtractPlugin
-JavaScript에서 분리된 CSS를 별도의 파일로 추출하는 데 사용된다. 이렇게 함으로써, CSS를 비동기적으로 로드하거나 별도의 CSS 파일로 캐시하는 것이 가능해져 웹의 로딩 성능이 향상된다.
+#### 5.MiniCssExtractPlugin:
+* JavaScript에서 분리된 CSS를 별도의 파일로 추출하는 데 사용된다. 이렇게 함으로써, CSS를 비동기적으로 로드하거나 별도의 CSS 파일로 캐시하는 것이 가능해져 웹의 로딩 성능이 향상된다.
 
 #### 참고: https://webpack.js.org/configuration/plugins/
 
@@ -235,17 +235,17 @@ Babel의 프리셋은 특정 변환을 위한 여러 플러그인의 집합이�
 즉 목적에 맞게 여러가지 플러그인을 세트로 모아놓은 것을 "프리셋"이라고 한다.Babel과 관련된 이러한 프리셋들은 바벨 설정 파일 (예: .babelrc 또는 babel.config.js)에서 presets 배열 안에 정의되어 사용된다.
 
 ### [자주쓰는 preset]:
-#### 1. @babel/preset-env
-ES2015 이후의 모든 버전의 JavaScript를 ES5로 변환해준니다. targets 옵션을 통해 특정 브라우저나 환경을 지정하면, 해당 환경에서 지원되는 기능은 변환하지 않고, 지원되지 않는 기능만 변환하는 스마트한 변환을 수행한다.
+#### 1. @babel/preset-env:
+* ES2015 이후의 모든 버전의 JavaScript를 ES5로 변환해준니다. targets 옵션을 통해 특정 브라우저나 환경을 지정하면, 해당 환경에서 지원되는 기능은 변환하지 않고, 지원되지 않는 기능만 변환하는 스마트한 변환을 수행한다.
 
-#### 2. @babel/preset-flow
-기능: preset-flow는 Flow 타입 주석을 제거하여 표준 JavaScript로 코드를 변환한다. Flow는 정적 타입 검사를 위한 JavaScript 확장이다.
+#### 2. @babel/preset-flow:
+* 기능: preset-flow는 Flow 타입 주석을 제거하여 표준 JavaScript로 코드를 변환한다. Flow는 정적 타입 검사를 위한 JavaScript 확장이다.
 
-#### 3. @babel/preset-react
-React JSX 문법과 기타 React 관련 기능들을 변환하는 데 사용된다. JSX는 React 컴포넌트를 정의할 때 사용하는 XML과 유사한 문법이다.
+#### 3. @babel/preset-react:
+* React JSX 문법과 기타 React 관련 기능들을 변환하는 데 사용된다. JSX는 React 컴포넌트를 정의할 때 사용하는 XML과 유사한 문법이다.
 
-#### 4. @babel/preset-typescript
-TypeScript 코드를 표준 JavaScript로 변환한다. TypeScript는 정적 타입 검사를 제공하는 JavaScript의 확장이다. 이 프리셋을 사용하여 TypeScript의 타입 주석 및 기타 TypeScript 전용 문법을 제거한다.
+#### 4. @babel/preset-typescript:
+* TypeScript 코드를 표준 JavaScript로 변환한다. TypeScript는 정적 타입 검사를 제공하는 JavaScript의 확장이다. 이 프리셋을 사용하여 TypeScript의 타입 주석 및 기타 TypeScript 전용 문법을 제거한다.
 
 ```javascript
 // babel.config.js:
