@@ -325,6 +325,75 @@ extends: ["eslint:recommended", "plugin:prettier/recommended"],
 
 <br/>
 
+## 최적화 플러그인
+
+#### 1.CopyPlugin: 
+* 이 플러그인은 웹팩 빌드 시 특정 파일이나 디렉토리를 다른 위치로 복사할 수 있게 돕는다. 여기서는 node_modules 디렉토리에 있는 axios.min.js 파일을 결과물 디렉토리(./dist)에 복사하는 역할을 한다.
+
+#### 2.OptimizeCSSAssetsPlugin: 
+* 이 플러그인은 CSS 자산을 최적화하며, CSS 파일 내의 불필요한 공백, 주석 등을 제거하여 파일 크기를 줄인다. 애플리케이션의 로딩 시간을 단축시키는데 기여한다.
+
+#### 3.TerserPlugin: 
+* 자바스크립트 코드를 난독화하고 불필요한 요소들(예: console.log 구문)을 제거하는 플러그인이다. 파일 크기를 줄이고 보안성을 높이는 데 도움이 된다.
+
+#### 4.splitChunks: 
+* 웹팩의 내장 최적화 기능으로, 코드 스플리팅을 통해 중복 코드를 제거하고, 결과물을 여러 파일로 분리할 수 있게 돕는다. 이렇게 하면 브라우저가 여러 파일을 동시에 다운로드할 수 있어 로딩 시간이 단축된다.
+
+#### 5.externals: 
+* 웹팩에서 특정 모듈을 무시하게 하는 설정이다. 여기서는 axios 라이브러리가 이미 빌드된 상태로 제공되므로, 빌드 프로세스에서 제외하여 번들 크기를 줄이고 빌드 시간을 단축시키는데 사용되고 있다.
+
+```javascript
+module.exports = {
+  mode,
+  entry: {
+     ...
+  },
+  output: {
+     ...
+  },
+  devServer: {
+     ...
+  },
+  module: {
+    rules: [
+     ...
+    ]
+  },
+  plugins: [
+    ... 
+    new CopyPlugin([
+      {
+        from: "./node_modules/axios/dist/axios.min.js", //axios는 이미 node_modules에 위치해 있기 때문에 이를 웹팩 아웃풋 폴더에 옮기고 index.html에서 로딩해야한다
+        to: "./axios.min.js" // 목적지 파일에 들어간다
+      }
+    ])
+  ],
+  optimization: {
+    minimizer:
+      mode === "production"
+        ? [
+            new OptimizeCSSAssetsPlugin(),
+            new TerserPlugin({
+              terserOptions: {
+                compress: {
+                  drop_console: true // 콘솔 로그를 제거한다
+                }
+              }
+            })
+          ]
+        : [],
+    splitChunks: {
+      chunks: "all" //build시 중복코드를 제거(코드스플리팅 적용시)
+    }
+  },
+  externals: {
+    axios: "axios"
+  }
+};
+```
+
+<br/>
+
 ## 폴더 구성
 
 - src: 검색 어플리케이션 프론트엔드 소스
