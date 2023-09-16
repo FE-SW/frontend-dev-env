@@ -351,4 +351,7 @@ extends: ["eslint:recommended", "plugin:prettier/recommended"],
 
 ## 참고
 * https://webpack.kr/concepts/
-* https://www.inflearn.com/course/프론트엔드-개발환경
+* https://babeljs.io/docs/
+* https://eslint.org/docs/latest/
+* https://prettier.io/docs/en/
+* https://jeonghwan-kim.github.io/series/2019/12/09/frontend-dev-env-npm.html#1-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EA%B0%9C%EB%B0%9C%EC%97%90-nodejs%EA%B0%80-%ED%95%84%EC%9A%94%ED%95%9C-%EC%9D%B4%EC%9C%A0
