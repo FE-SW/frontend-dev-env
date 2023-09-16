@@ -87,7 +87,7 @@ npm init 명령어를 사용하면 package.json에 정보를 기록하고 프로
 
 웹팩이 모듈을 번들링 하기위해 최초 진입점하는 자바스크립트 파일을 설정하는 부분(빌드를 할 대상 파일의 최초위치) 
 
-```java
+```javascript
 / webpack.config.js
 module.exports = {
   entry: "./src/index.js",
@@ -98,7 +98,7 @@ module.exports = {
 
 웹팩이 "빌드"한 결과물의 "파일이름","저장경로"등 설정
 
-```java
+```javascript
 var path = require("path");
 
 module.exports = {
@@ -113,7 +113,7 @@ module.exports = {
 
 로더는 웹팩이 자바스크립트 파일이 아닌 웹 자원(CSS, Images, 폰트 등)들을 모듈로 만들어주는 속성
 
-```java
+```javascript
 module.exports = {
   module: {
     rules: [
@@ -126,7 +126,7 @@ module.exports = {
 }
 ```
 
-#### 1.css-loader:
+#### 1. css-loader:
 * CSS 파일을 JavaScript 모듈로 해석하고 번들링한다. 이 로더를 사용하면, JavaScript에서 import나 require 문을 통해 CSS를 로드할 수 있게 된다.
 
 #### 2. style-loader:
@@ -138,14 +138,17 @@ module.exports = {
 #### 4. url-loader:
 * file-loader와 유사한 작업을 수행하지만, 설정한 크기의 임계값을 기준으로 작은 파일을 Base64 인코딩하여 직접 JavaScript 번들에 포함시킬 수 있다. 이는 HTTP 요청 수를 줄이는 데 도움이 되지만, 큰 파일에 대해 사용할 경우 번들의 크기가 너무 커질 수 있으므로 주의가 필요하다.
 
+#### 5. sass-loader:
+* SASS/SCSS 파일을 웹팩이 처리할 수 있는 CSS로 변환한다. 이 로더는 node-sass 또는 dart-sass와 함께 작동하여, 웹팩 빌드 프로세스 중에 SASS 파일을 일반 CSS로 컴파일한다. 주로 css-loader와 style-loader와 체인으로 함께 사용되며, 개발자가 JavaScript에서 직접 SASS 스타일을 import할 수 있게 해준다.
 
+#### 참고: https://webpack.js.org/loaders/
 
 ### 4.[plugin]:
 
 웹팩에 "추가적인 기능"을 제공하는 속성 <br/>
 로더는 파일을 빌드하는 과정에 관여하는 반면, 플러그인은 빌드된 결과물의 형태를 바꾸는 속성
 
-```java
+```javascript
 module.exports = {
   plugins: [new CleanWebpackPlugin()], //빌드 이전 결과물을 제거하는 플러그인
 }
@@ -166,16 +169,19 @@ HTML 파일을 생성하며, 웹팩으로 번들링된 JavaScript, CSS, 그 외 
 #### 5.MiniCssExtractPlugin
 JavaScript에서 분리된 CSS를 별도의 파일로 추출하는 데 사용된다. 이렇게 함으로써, CSS를 비동기적으로 로드하거나 별도의 CSS 파일로 캐시하는 것이 가능해져 웹의 로딩 성능이 향상된다.
 
+#### 참고: https://webpack.js.org/configuration/plugins/
+
+<br/>
 
 ## webpack-dev-server
 
 webpack-dev-server는 웹팩으로 번들링된 웹 애플리케이션을 개발 환경에서 빠르고 효율적으로 테스트하고 미리보기 위한 간단한 웹 서버이다. 
 
-```java
+```javascript
 npm i -D webpack-dev-server // 설치 명령어 
 ```
 
-```java
+```javascript
 {
   "scripts": {
     "start": "webpack-dev-server" // 웹팩 개발서버 실행
@@ -183,7 +189,7 @@ npm i -D webpack-dev-server // 설치 명령어
 }
 ```
 
-```java
+```javascript
 //웹팩 데브서버 설정
 devServer: {
   overlay: true, // 컴파일 중 에러나 경고가 발생하면 브라우저 화면에 오버레이를 통해 표시
@@ -214,8 +220,7 @@ devServer: {
 
 위에 없는옵션들은 공식문서에서 천천히 읽고 설정해주면 된다. 
 
-
-
+#### 참고: https://webpack.js.org/configuration/dev-server/
 
 <br/>
 
@@ -240,14 +245,81 @@ React JSX 문법과 기타 React 관련 기능들을 변환하는 데 사용된�
 #### 4. @babel/preset-typescript
 TypeScript 코드를 표준 JavaScript로 변환한다. TypeScript는 정적 타입 검사를 제공하는 JavaScript의 확장이다. 이 프리셋을 사용하여 TypeScript의 타입 주석 및 기타 TypeScript 전용 문법을 제거한다.
 
-
-
-```java
+```javascript
 // babel.config.js:
 module.exports = {
   presets: ["@babel/preset-env","@babel/preset-flow","@babel/preset-react","@babel/preset-typescript"],
 }
 ```
+
+#### 참고: https://babeljs.io/docs/presets
+
+<br/>
+
+## ESLint
+ESLint는 자바스크립트 코드에서 발견되는 문제점들을 식별해주는 정적 분석 도구이다. 코드의 포맷을 일관적으로 유지하고, 버그를 예방하며, 특정 스타일 가이드라인을 강제하기 위해 사용한다. ESLint 설정 파일은 프로젝트의 루트에 위치하며, 다양한 옵션을 통해 사용자가 규칙을 사용자 정의할 수 있게 해준다.
+```javascript
+module.exports = {
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+    }
+}
+```
+
+#### 1.env:
+* 이 옵션은 코드가 실행될 환경을 정의한다. 여기서는 "browser"와 "es2021"이 설정되어 있어, 브라우저 환경과 ECMAScript 2021 버전의 최신 기능을 사용할 수 있다.
+
+#### 2.extends:
+* 기본 ESLint 규칙 외에도 다른 규칙 세트를 확장하여 사용할 수 있다. 여기서는 "eslint:recommended"를 사용하여 ESLint에서 권장하는 기본 규칙 세트를 활성화하고 있다.
+
+#### 3.overrides:
+* 특정 파일에 대해 다른 ESLint 규칙을 적용하려면 이 옵션을 사용한다.
+
+#### 4.parserOptions:
+* 파서 옵션을 설정하여 JavaScript 버전(여기서는 "latest") 및 소스 유형(여기서는 "module")을 지정한다. 이렇게 하면 최신 ECMAScript 버전의 구문을 사용할 수 있고, 모듈 형식으로 코드를 작성할 수 있다.
+
+#### 5.rules:
+* ESLint 규칙을 개별적으로 설정하거나 재정의하는 옵션이다. 
+
+#### 참고: https://eslint.org/docs/latest/use/getting-started
+
+<br/>
+
+## Prettier
+Prettier는 코드 포매팅 도구로, 개발자들이 작성한 코드를 일관된 스타일로 자동으로 정리해주는 도구이다. 프로젝트에서 사용하는 여러 언어와 파일 형식을 지원하며, 팀원들 간의 코드 스타일 차이를 줄여 코드 리뷰 과정을 더 간결하고 효율적으로 만들어즌다. 설정 옵션을 통해 특정 코딩 스타일 가이드라인을 준수하도록 커스터마이징할 수 있다. Prettier의 설정은 보통 prettierrc 파일에 작성하는데, prettierrc 파일에는 Prettier가 코드를 어떻게 포맷해야 하는지에 대한 다양한 규칙과 설정이 들어있다. 간단한 Prettier의 설정파일을 살펴보면, 
+
+```javascript
+{
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "bracketSpacing": true
+}
+```
+* tabWidth: 한 탭의 공백 수를 정의. (예: "tabWidth": 2는 탭 한 개가 2개의 공백과 같은 폭을 가짐)
+* semi: 세미콜론의 사용 여부를 정의. true로 설정하면 문장 끝에 세미콜론이 자동으로 추가
+* singleQuote: 문자열을 작성할 때 단일 따옴표를 사용할지, 아니면 이중 따옴표를 사용할지 정의
+* trailingComma: 객체 또는 배열의 마지막 항목 뒤에 쉼표를 추가할지 여부를 정의. 이렇게 하면 Git 차이점이 더 명확해지고, 요소를 추가하거나 제거할 때 실수할 가능성이 줄어듬
+* bracketSpacing: 객체 리터럴에서 괄호 사이에 공백을 넣을지 여부를 결정
+
+
+또는 eslintrc파일에서 추천 프리티어 플러그인 추가함으로써 간단하게 설정할 수 있다
+```javascirpt
+extends: ["eslint:recommended", "plugin:prettier/recommended"],
+```
+
+#### 참고: https://prettier.io/docs/en/options.html
 
 <br/>
 
