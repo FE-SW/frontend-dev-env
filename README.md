@@ -1,8 +1,6 @@
 # 프론트엔드 개발 환경 설정
 
-
 ## Node.js
-
 
 ### 프론트엔드 개발에 Node.js가 필요한 이유
 
@@ -11,8 +9,6 @@
 
 웹개발을 도와주는 모듈을 설치할 필요가 있는데, 이 모듈들은 브라우저가 인식하지 못한다(html,css,js가 아니라)
 이떄 nodejs가 이러한 모듈을 브라우저가 아닌 nodejs환경에서 동작할 수 있도록 도와준다.
-
-<br/>
 
 1.최신 스펙으로 개발할 수 있다.
   * 자바스크립트의 발전에 비해 브라우저의 지원 속도는 느리기 때문에 babel 같은 도구가 필요함 (babel은 nodejs환경에서 사용가능)
@@ -25,8 +21,6 @@
 
 3.개발 환경 커스터마이징
   * 개발환경을 직접 커스터마이징 할 수 있다.
-
-<br/>
 
 ## NPM
 
@@ -46,8 +40,6 @@ npm init 명령어를 사용하면 package.json에 정보를 기록하고 프로
   * npm을 사용하여 패키지를 전역적으로 설치할 수도 있고, 특정 프로젝트 내부에만 설치할 수도 있다.
   * npm이 없던시절에는 외부 패키지을 스크립트파일 내에 CDN형식으로 불러왔다면, 요새는 npm install 명령어를 통해 쉽게 패키지를 설치할 수 있다.
 
-<br/>
-
 ## Webpack
 
 웹팩(Webpack)은 현대 JavaScript 애플리케이션의 번들러이다. SPA(Single Page Application) 환경에서 여러 모듈과 의존성을 하나의 최적화된 파일로 병합하며, 
@@ -57,7 +49,6 @@ npm init 명령어를 사용하면 package.json에 정보를 기록하고 프로
 
 웹팩은 자바스크립트 파일들을 모듈화해서 하나의 자바스크립트 파일로 번들링해준다.
 (여러개의 스크립트 파일일 경우, 파일을 컴파일 할 때, 여러개 파일을 요청하고 로드하는데 시간이 오래 걸림)
-
 
 ### [특징/기능]
 1. 모듈화:
@@ -78,13 +69,9 @@ npm init 명령어를 사용하면 package.json에 정보를 기록하고 프로
 6. 환경 변수와 설정:
   * 개발, 테스트, 배포 등 다양한 환경에 따라 다른 설정이나 변수를 적용할 수 있게 도와줌
 
-<br/>
-
 ## 웹팩 주요속성 4가지
 
-
 ### 1.[entry]:
-
 웹팩이 모듈을 번들링 하기위해 최초 진입점하는 자바스크립트 파일을 설정하는 부분(빌드를 할 대상 파일의 최초위치) 
 
 ```javascript
@@ -95,7 +82,6 @@ module.exports = {
 ```
 
 ### 2.[output]:
-
 웹팩이 "빌드"한 결과물의 "파일이름","저장경로"등 설정
 
 ```javascript
@@ -110,7 +96,6 @@ module.exports = {
 ```
 
 ### 3.[loader]:
-
 로더는 웹팩이 자바스크립트 파일이 아닌 웹 자원(CSS, Images, 폰트 등)들을 모듈로 만들어주는 속성
 
 ```javascript
@@ -143,10 +128,7 @@ module.exports = {
 
 #### 참고: https://webpack.js.org/loaders/
 
-<br/>
-
 ### 4.[plugin]:
-
 웹팩에 "추가적인 기능"을 제공하는 속성 <br/>
 로더는 파일을 빌드하는 과정에 관여하는 반면, 플러그인은 빌드된 결과물의 형태를 바꾸는 속성
 
@@ -173,10 +155,7 @@ module.exports = {
 
 #### 참고: https://webpack.js.org/configuration/plugins/
 
-<br/>
-
 ## webpack-dev-server
-
 webpack-dev-server는 웹팩으로 번들링된 웹 애플리케이션을 개발 환경에서 빠르고 효율적으로 테스트하고 미리보기 위한 간단한 웹 서버이다. 
 
 ```javascript
@@ -224,8 +203,6 @@ devServer: {
 
 #### 참고: https://webpack.js.org/configuration/dev-server/
 
-<br/>
-
 ## 바벨(Babel)
 Babel은 JavaScript 컴파일러로써, 최신 JavaScript(ES6 이상) 문법을 이전 버전의 JavaScript(ES5 등)로 변환해주는 도구이다. <br/>
 이는 오래된 브라우저나 환경에서도 최신 JavaScript 코드를 호환성 있게 실행할 수 있도록 도와준다. Babel은 플러그인과 프리셋의 시스템을 사용하여 변환 과정을 매우 유연하게 구성할 수 있습니다.
@@ -255,8 +232,6 @@ module.exports = {
 ```
 
 #### 참고: https://babeljs.io/docs/presets
-
-<br/>
 
 ## ESLint
 ESLint는 자바스크립트 코드에서 발견되는 문제점들을 식별해주는 정적 분석 도구이다. 코드의 포맷을 일관적으로 유지하고, 버그를 예방하며, 특정 스타일 가이드라인을 강제하기 위해 사용한다. ESLint 설정 파일은 프로젝트의 루트에 위치하며, 다양한 옵션을 통해 사용자가 규칙을 사용자 정의할 수 있게 해준다.
@@ -295,8 +270,6 @@ module.exports = {
 
 #### 참고: https://eslint.org/docs/latest/use/getting-started
 
-<br/>
-
 ## Prettier
 Prettier는 코드 포매팅 도구로, 개발자들이 작성한 코드를 일관된 스타일로 자동으로 정리해주는 도구이다. 프로젝트에서 사용하는 여러 언어와 파일 형식을 지원하며, 팀원들 간의 코드 스타일 차이를 줄여 코드 리뷰 과정을 더 간결하고 효율적으로 만들어즌다. 설정 옵션을 통해 특정 코딩 스타일 가이드라인을 준수하도록 커스터마이징할 수 있다. Prettier의 설정은 보통 prettierrc 파일에 작성하는데, prettierrc 파일에는 Prettier가 코드를 어떻게 포맷해야 하는지에 대한 다양한 규칙과 설정이 들어있다. 간단한 Prettier의 설정파일을 살펴보면, 
 
@@ -322,8 +295,6 @@ extends: ["eslint:recommended", "plugin:prettier/recommended"],
 ```
 
 #### 참고: https://prettier.io/docs/en/options.html
-
-<br/>
 
 ## 최적화 플러그인
 
@@ -392,8 +363,6 @@ module.exports = {
 };
 ```
 
-<br/>
-
 ## 폴더 구성
 
 - src: 검색 어플리케이션 프론트엔드 소스
@@ -417,8 +386,6 @@ module.exports = {
 - `4-webpack/3-optimazation`: 웹팩 최적화 실습
 - `5-sample/1-react`: 리액트 샘플 실습
 - `master`: 최종 결과물
-
-<br/>
 
 ## 참고
 * https://webpack.kr/concepts/
