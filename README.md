@@ -364,16 +364,12 @@ module.exports = {
 ```
 
 ## 폴더 구성
-
 - src: 검색 어플리케이션 프론트엔드 소스
 - server: 검색 어플리케이션 API 서버 코드 
 - resource: 강의 진행에 필요한 자료. 이미지나 이론 실습용 코드
 - react-sample: 마지막에 순서인 리액트 개발환경 구성을 위한 실습 코드
 
-<br/>
-
 ## 브랜치
-
 - `1-webpack/1-entry`: 웹팩 엔트리/아웃풋 실습
 - `1-webpack/2-loader`: 웹팩 로더 실습
 - `1-webpack/3-plugin`: 웹팩 플러그인 실습
